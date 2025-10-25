@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Projet – Data Science & ML | Gérard SOKPETIN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Mes Images/photoroom_20250502_145321.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .project-hero {
+            background: #0f2749;
+            color: #fff;
+            padding: 56px 0 42px;
+            text-align: center;
+            margin-bottom: 20px
+        }
+
+            .project-hero h1 {
+                margin: 0 0 8px;
+                font-size: 32px
+            }
+
+        .backline {
+            margin-top: 10px
+        }
+
+            .backline a {
+                color: #fff;
+                opacity: .9;
+                text-decoration: none;
+                border-bottom: 1px dashed rgba(255,255,255,.4)
+            }
+
+                .backline a:hover {
+                    opacity: 1;
+                    border-bottom-color: #fff
+                }
+    </style>
+</head>
+<body>
+    <nav class="topbar">
+        <div class="container nav-inner">
+            <div class="brand">Gérard SOKPETIN</div>
+            <ul class="menu"><li><a href="index.html#about">À propos</a></li><li><a href="index.html#work">Projets</a></li><li><a href="index.html#skills">Compétences</a></li><li><a href="index.html#contact">Contact</a></li></ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container">
+            <h1>Data Science & Machine Learning</h1>
+            <p>Prévision du risque, scoring, pipelines</p><div class="backline"><a href="index.html#work">← Retour aux projets</a></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="about-tabs" role="tablist" aria-label="Détails DS/ML">
+            <button class="tab-link active" data-target="#res" role="tab" aria-selected="true">Résultats</button>
+            <button class="tab-link" data-target="#meth" role="tab" aria-selected="false">Méthodes</button>
+            <button class="tab-link" data-target="#code" role="tab" aria-selected="false">Code</button>
+        </div>
+
+        <div class="tab-panels">
+            <section id="res" class="tab-panel active" role="tabpanel">
+                <h2>Résultats clés</h2>
+                <ul>
+                    <li>Modèle XGBoost : AUC = 0,86 ; lift@10% = 2,3.</li>
+                    <li>GLM explicable (coefficients, effets partiels) pour production.</li>
+                    <li>Suivi performance mensuel (drift, PSI).</li>
+                </ul>
+            </section>
+
+            <section id="meth" class="tab-panel" role="tabpanel" hidden>
+                <h2>Méthodes</h2>
+                <ul>
+                    <li>Feature store : encodage catégoriel, scaling, imputations.</li>
+                    <li>Validation : k-fold, grid search, early stopping.</li>
+                    <li>Interprétabilité : SHAP, PDP/ICE.</li>
+                </ul>
+            </section>
+
+            <section id="code" class="tab-panel" role="tabpanel" hidden>
+                <h2>Extraits de code</h2>
+                <h3>Python – XGBoost</h3>
+                <pre><code># Python
+import xgboost as xgb
+dtrain = xgb.DMatrix(X_train, label=y_train)
+dval   = xgb.DMatrix(X_val,   label=y_val)
+params = dict(max_depth=6, eta=0.05, subsample=0.8, colsample_bytree=0.8,
+              objective='binary:logistic', eval_metric='auc')
+bst = xgb.train(params, dtrain, num_boost_round=200,
+                evals=[(dtrain,'train'),(dval,'val')], early_stopping_rounds=20)
+pred = bst.predict(dval)
+</code></pre>
+                <p class="section-subtitle">Repo complet : <a href="#" target="_blank">[lien GitHub]</a></p>
+            </section>
+        </div>
+    </main>
+
+    <footer><p>© 2025 Gérard SOKPETIN – Tous droits réservés</p></footer>
+
+    <script>document.querySelectorAll('.about-tabs .tab-link').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.about-tabs .tab-link').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false')});
+        btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+        const target = btn.getAttribute('data-target');
+        document.querySelectorAll('.tab-panel').forEach(p=>{p.hidden=true;p.classList.remove('active')});
+        const panel = document.querySelector(target); if(panel){ panel.hidden=false; panel.classList.add('active'); }
+      })
+    });</script>
+</body>
+</html>

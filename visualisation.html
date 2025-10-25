@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Projet – Visualisation & Communication | Gérard SOKPETIN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Mes Images/photoroom_20250502_145321.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .project-hero {
+            background: #0f2749;
+            color: #fff;
+            padding: 56px 0 42px;
+            text-align: center;
+            margin-bottom: 20px
+        }
+
+            .project-hero h1 {
+                margin: 0 0 8px;
+                font-size: 32px
+            }
+
+        .backline {
+            margin-top: 10px
+        }
+
+            .backline a {
+                color: #fff;
+                opacity: .9;
+                text-decoration: none;
+                border-bottom: 1px dashed rgba(255,255,255,.4)
+            }
+
+                .backline a:hover {
+                    opacity: 1;
+                    border-bottom-color: #fff
+                }
+    </style>
+</head>
+<body>
+    <nav class="topbar">
+        <div class="container nav-inner">
+            <div class="brand">Gérard SOKPETIN</div>
+            <ul class="menu"><li><a href="index.html#about">À propos</a></li><li><a href="index.html#work">Projets</a></li><li><a href="index.html#skills">Compétences</a></li><li><a href="index.html#contact">Contact</a></li></ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container">
+            <h1>Visualisation & Communication</h1>
+            <p>Dashboards Power BI / Excel, KPI & storytelling</p><div class="backline"><a href="index.html#work">← Retour aux projets</a></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="about-tabs" role="tablist" aria-label="Détails Viz">
+            <button class="tab-link active" data-target="#res" role="tab" aria-selected="true">Résultats</button>
+            <button class="tab-link" data-target="#meth" role="tab" aria-selected="false">Méthodes</button>
+            <button class="tab-link" data-target="#code" role="tab" aria-selected="false">Code</button>
+        </div>
+
+        <div class="tab-panels">
+            <section id="res" class="tab-panel active" role="tabpanel">
+                <h2>Résultats</h2>
+                <ul>
+                    <li>Suite de dashboards (production, sinistres, rentabilité).</li>
+                    <li>Temps d’analyse réduit de 40% pour les comités.</li>
+                    <li>Guidelines UX + dictionnaire de données.</li>
+                </ul>
+            </section>
+
+            <section id="meth" class="tab-panel" role="tabpanel" hidden>
+                <h2>Méthodes</h2>
+                <ul>
+                    <li>Modèle sémantique Power BI (star schema).</li>
+                    <li>Measures DAX (rolling 12m, YoY, mix produit).</li>
+                    <li>Design system : couleurs, typographies, niveaux d’alerte.</li>
+                </ul>
+            </section>
+
+            <section id="code" class="tab-panel" role="tabpanel" hidden>
+                <h2>Extraits</h2>
+                <h3>DAX – Croissance annuelle</h3>
+                <pre><code>YoY Claims = 
+VAR Prev = CALCULATE([Claims], DATEADD('Date'[Date], -1, YEAR))
+RETURN DIVIDE([Claims] - Prev, Prev)
+</code></pre>
+                <p class="section-subtitle">Exemples Power Query / DAX et fichiers PBIX sur : <a href="#" target="_blank">[lien GitHub/Drive]</a></p>
+            </section>
+        </div>
+    </main>
+
+    <footer><p>© 2025 Gérard SOKPETIN – Tous droits réservés</p></footer>
+
+    <script>document.querySelectorAll('.about-tabs .tab-link').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.about-tabs .tab-link').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false')});
+        btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+        const target = btn.getAttribute('data-target');
+        document.querySelectorAll('.tab-panel').forEach(p=>{p.hidden=true;p.classList.remove('active')});
+        const panel = document.querySelector(target); if(panel){ panel.hidden=false; panel.classList.add('active'); }
+      })
+    });</script>
+</body>
+</html>

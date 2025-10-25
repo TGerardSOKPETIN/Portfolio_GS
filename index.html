@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio – Gérard SOKPETIN</title>
+
+    <!-- Police & Favicon -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="Mes Images/photoroom_20250502_145321.jpeg" />
+
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="topbar" aria-label="Navigation principale">
+        <div class="container nav-inner">
+            <div class="brand">Gérard SOKPETIN</div>
+            <ul class="menu">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#work">Projets</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== EN-TÊTE PRINCIPALE ===== -->
+    <header class="hero">
+        <div class="container">
+            <h1>Gérard SOKPETIN</h1>
+            <p>Actuaire & Data Analyst | Modélisation du risque et de la performance</p>
+            <div class="cta">
+                <a class="btn primary" href="CV_Gérard_Sokpetin.pdf" target="_blank" rel="noopener">Télécharger mon CV</a>
+                <a class="btn" href="#contact">Me contacter</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== SECTION À PROPOS (dark + onglets) ===== -->
+    <section id="about" class="about-dark" aria-labelledby="about-title">
+        <div class="container about-grid">
+            <!-- Photo -->
+            <div class="about-photo">
+                <img src="Mes Images/photoroom_20250502_145321.jpeg" alt="Portrait de Gérard SOKPETIN" />
+            </div>
+
+            <!-- Contenu -->
+            <div class="about-content">
+                <h2 id="about-title">About Me</h2>
+                <p class="about-text">
+                    Actuaire & Data Analyst, j’exploite la donnée (SAS, R, Python, Power BI) pour
+                    concevoir des modèles robustes sous Solvabilité II & IFRS 17. Mon objectif :
+                    transformer l’information en décisions fiables, mesurables et actionnables.
+                </p>
+
+                <!-- Onglets -->
+                <div class="about-tabs" role="tablist" aria-label="À propos">
+                    <button class="tab-link active" data-target="#skills-panel" role="tab" aria-selected="true">Skills</button>
+                    <button class="tab-link" data-target="#experience-panel" role="tab" aria-selected="false">Experience</button>
+                    <button class="tab-link" data-target="#education-panel" role="tab" aria-selected="false">Education</button>
+                </div>
+
+                <!-- Panneaux -->
+                <div class="tab-panels">
+                    <div id="skills-panel" class="tab-panel active" role="tabpanel">
+                        <ul class="bulleted">
+                            <li><span>UI/UX</span> — Conception de dashboards & outils de décision</li>
+                            <li><span>Data Science</span> — GLM, XGBoost, segmentation, SHAP</li>
+                            <li><span>Actuarial</span> — Mortalité, pricing, réassurance</li>
+                            <li><span>Stack</span> — SAS, R, Python, SQL, Power BI, Excel</li>
+                        </ul>
+                    </div>
+
+                    <div id="experience-panel" class="tab-panel" role="tabpanel" hidden>
+                        <ul class="bulleted">
+                            <li><span>Crédit Agricole Assurances</span> — Lois de mortalité par richesse (10M+ lignes)</li>
+                            <li><span>SUNU</span> — Souscription & analyse portefeuille</li>
+                            <li><span>Tutorat</span> — Pédagogie & vulgarisation technique</li>
+                        </ul>
+                    </div>
+
+                    <div id="education-panel" class="tab-panel" role="tabpanel" hidden>
+                        <ul class="bulleted">
+                            <li><span>M2</span> — Statistiques & Probabilités</li>
+                            <li><span>M2</span> — MBFA – Risque Assurance Décision</li>
+                            <li><span>Certifs</span> — Power BI, Python, IFRS 17 (selon dispo)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION PROJETS ===== -->
+    <section id="work" class="container" aria-labelledby="work-title">
+        <h2 id="work-title">Mes Projets</h2>
+
+        <div class="gallery">
+            <!-- Chaque carte est maintenant un lien vers sa page détaillée -->
+            <a class="card card-link" href="actuarial.html" title="Voir tous mes travaux actuariels">
+                <img src="Mes Images/image_actuariat.png" alt="Illustration modélisation actuarielle" />
+                <h3>Modélisation Statistique & Actuarielle</h3>
+                <p>Lois de mortalité, pricing, segmentation, Solvabilité II / IFRS 17.</p>
+            </a>
+
+            <a class="card card-link" href="datascience.html" title="Voir mes travaux en Data Science & Machine Learning">
+                <img src="Mes Images/image_data_model.png" alt="Illustration data science et machine learning" />
+                <h3>Data Science & Machine Learning</h3>
+                <p>GLM, XGBoost, pipelines de features, interprétabilité.</p>
+            </a>
+
+            <a class="card card-link" href="visualisation.html" title="Voir mes dashboards & data viz">
+                <img src="Mes Images/image_visualisation.png" alt="Illustration visualisation de données" />
+                <h3>Visualisation & Communication</h3>
+                <p>Dashboards Power BI / Excel, KPI, storytelling décisionnel.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== SECTION COMPÉTENCES ===== -->
+    <section id="skills" class="container" aria-labelledby="skills-title">
+        <h2 id="skills-title">Compétences</h2>
+        <ul>
+            <li><strong>Langages :</strong> SAS, R, Python, SQL</li>
+            <li><strong>Modélisation :</strong> GLM, XGBoost, segmentation, mortalité</li>
+            <li><strong>Outils :</strong> Power BI, Excel, Visual Studio, GitHub</li>
+            <li><strong>Réglementation :</strong> Solvabilité II, IFRS 17</li>
+        </ul>
+    </section>
+
+    <!-- ===== SECTION CONTACT (dark + form) ===== -->
+    <section id="contact" class="contact-dark" aria-labelledby="contact-title">
+        <div class="container contact-grid">
+            <!-- Colonne gauche : infos -->
+            <div class="contact-info">
+                <h2 id="contact-title">Contact Me</h2>
+                <ul class="contact-list">
+                    <li>📧 <a href="mailto:gerard.sokpetin@imsp-uac.org">gerard.sokpetin@imsp-uac.org</a></li>
+                    <li>📞 <a href="tel:+0000000000">+00 00 00 00 00</a></li>
+                    <li class="socials">
+                        <a href="https://www.linkedin.com/in/gérard-sokpetin" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+                        <a href="https://twitter.com/" target="_blank" rel="noopener">X/Twitter</a>
+                    </li>
+                </ul>
+
+                <a class="btn primary" href="CV_Gérard_Sokpetin.pdf" target="_blank" rel="noopener">Download CV</a>
+            </div>
+
+            <!-- Colonne droite : formulaire -->
+            <div class="contact-form">
+                <form id="contactForm" novalidate>
+                    <input type="text" name="name" placeholder="Your Name" autocomplete="name" required />
+                    <input type="email" name="email" placeholder="Your Email" autocomplete="email" required />
+                    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+
+                    <button type="submit" class="btn primary btn-submit">Submit</button>
+
+                    <p id="contactOK" class="form-msg ok" hidden>✅ Merci, votre message a été envoyé.</p>
+                    <p id="contactERR" class="form-msg err" hidden>❌ Oups, échec de l’envoi. Réessayez.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PIED DE PAGE ===== -->
+    <footer>
+        <p>© 2025 Gérard SOKPETIN – Tous droits réservés</p>
+    </footer>
+
+    <!-- ===== Script : onglets "About Me" ===== -->
+    <script>
+        document.querySelectorAll('.about-tabs .tab-link').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.about-tabs .tab-link').forEach(b => {
+                    b.classList.remove('active'); b.setAttribute('aria-selected', 'false');
+                });
+                btn.classList.add('active'); btn.setAttribute('aria-selected', 'true');
+
+                const target = btn.getAttribute('data-target');
+                document.querySelectorAll('.tab-panel').forEach(p => { p.hidden = true; p.classList.remove('active'); });
+                const panel = document.querySelector(target);
+                if (panel) { panel.hidden = false; panel.classList.add('active'); }
+            });
+        });
+    </script>
+
+    <!-- ===== Script : envoi du formulaire vers Google Sheets (Apps Script) ===== -->
+    <script>
+        // Remplace si besoin par l'URL de ton déploiement Apps Script :
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9ao1r60mY9f-uROTci2qMPxilm4N1RY4NQn3j-hDAI8m3IoumVydx1NHoF9bpfWs/exec';
+
+        const form = document.getElementById('contactForm');
+        const okMsg = document.getElementById('contactOK');
+        const errMsg = document.getElementById('contactERR');
+        const btn = document.querySelector('.btn-submit');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            okMsg.hidden = true; errMsg.hidden = true;
+
+            if (!form.name.value.trim() || !form.email.value.trim() || !form.message.value.trim()) {
+                errMsg.textContent = 'Veuillez remplir tous les champs.'; errMsg.hidden = false; return;
+            }
+
+            btn.disabled = true; const old = btn.textContent; btn.textContent = 'Envoi…';
+
+            const payload = {
+                name: form.name.value.trim(),
+                email: form.email.value.trim(),
+                message: form.message.value.trim(),
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                okMsg.hidden = false;
+                form.reset();
+            } catch (err) {
+                errMsg.hidden = false;
+            } finally {
+                btn.disabled = false; btn.textContent = old;
+            }
+        });
+    </script>
+</body>
+</html>

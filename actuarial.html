@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projet – Modélisation Statistique & Actuarielle | Gérard SOKPETIN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="Mes Images/photoroom_20250502_145321.jpeg" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .project-hero {
+            background: #0f2749;
+            color: #fff;
+            padding: 56px 0 42px;
+            margin-bottom: 20px;
+            text-align: center
+        }
+
+            .project-hero h1 {
+                margin: 0 0 8px;
+                font-size: 32px
+            }
+
+        .backline {
+            margin-top: 10px
+        }
+
+            .backline a {
+                color: #fff;
+                opacity: .9;
+                text-decoration: none;
+                border-bottom: 1px dashed rgba(255,255,255,.4)
+            }
+
+                .backline a:hover {
+                    opacity: 1;
+                    border-bottom-color: #fff
+                }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            gap: 16px;
+            margin: 18px 0
+        }
+
+        .kpi {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            padding: 16px;
+            text-align: center
+        }
+
+            .kpi .v {
+                font-size: 22px;
+                color: var(--hero);
+                font-weight: 700
+            }
+
+        @media (max-width: 800px) {
+            .kpi-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- nav réutilisée -->
+    <nav class="topbar">
+        <div class="container nav-inner">
+            <div class="brand">Gérard SOKPETIN</div>
+            <ul class="menu">
+                <li><a href="index.html#about">À propos</a></li>
+                <li><a href="index.html#work">Projets</a></li>
+                <li><a href="index.html#skills">Compétences</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- en-tête projet -->
+    <header class="project-hero">
+        <div class="container">
+            <h1>Modélisation Statistique & Actuarielle</h1>
+            <p>Lois de mortalité, segmentation, pricing, Solvabilité II / IFRS 17</p>
+            <div class="backline"><a href="index.html#work">← Retour aux projets</a></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- KPIs rapides -->
+        <div class="kpi-grid">
+            <div class="kpi"><div class="v">10M+</div><div>Lignes traitées</div></div>
+            <div class="kpi"><div class="v">3</div><div>Lois de mortalité</div></div>
+            <div class="kpi"><div class="v">↑12%</div><div>Gain de précision</div></div>
+        </div>
+
+        <!-- Onglets -->
+        <div class="about-tabs" role="tablist" aria-label="Détails projet">
+            <button class="tab-link active" data-target="#res" role="tab" aria-selected="true">Résultats</button>
+            <button class="tab-link" data-target="#meth" role="tab" aria-selected="false">Méthodes</button>
+            <button class="tab-link" data-target="#code" role="tab" aria-selected="false">Code</button>
+        </div>
+
+        <div class="tab-panels">
+            <!-- Résultats -->
+            <section id="res" class="tab-panel active" role="tabpanel">
+                <h2>Résultats clés</h2>
+                <ul>
+                    <li>Lois de mortalité par niveau de richesse (classes R1–R5).</li>
+                    <li>Backtesting sur 5 ans – MAPE réduit de 12% vs baseline.</li>
+                    <li>Documentation IFRS 17 & Solvabilité II livrée.</li>
+                </ul>
+                <p class="section-subtitle">Livrables : note méthodo PDF, graphiques comparatifs, tables d’expérience.</p>
+            </section>
+
+            <!-- Méthodes -->
+            <section id="meth" class="tab-panel" role="tabpanel" hidden>
+                <h2>Méthodes & données</h2>
+                <ul>
+                    <li><strong>Données :</strong> portefeuilles épargne retraite (anonymisées), exposition–sinistres.</li>
+                    <li><strong>Préparation :</strong> nettoyage, winsorization, variables socio-démo, richesse par fractiles.</li>
+                    <li><strong>Modélisation :</strong> tables d’expérience, graduation (Whittaker–Henderson), GLM Poisson/NegBin.</li>
+                    <li><strong>Validation :</strong> split temporel, LR tests, information criteria (AIC/BIC), lift & calibration.</li>
+                </ul>
+            </section>
+
+            <!-- Code -->
+            <section id="code" class="tab-panel" role="tabpanel" hidden>
+                <h2>Extraits de code</h2>
+
+                <h3>R – Graduation Whittaker–Henderson</h3>
+                <pre><code># R
+library(MortalityLaws)
+qx_raw &lt;- df$qx
+fit &lt;- MortalityLaw(x = df$age, qx = qx_raw, law = "whittaker")
+df$qx_smooth &lt;- fitted(fit)
+</code></pre>
+
+                <h3>Python – GLM Poisson</h3>
+                <pre><code># Python
+import pandas as pd, statsmodels.api as sm
+X = pd.get_dummies(df[['age_band','wealth_class']], drop_first=True)
+X = sm.add_constant(X)
+y = df['claims']
+model = sm.GLM(y, X, family=sm.families.Poisson()).fit()
+print(model.summary())
+</code></pre>
+
+                <p class="section-subtitle">
+                    ➤ Dépôt complet (codes & notes) : <a href="#" target="_blank" rel="noopener">[lien GitHub ou ZIP]</a>
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Gérard SOKPETIN – Tous droits réservés</p>
+    </footer>
+
+    <!-- script des onglets (réutilise celui d'About) -->
+    <script>document.querySelectorAll('.about-tabs .tab-link').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.about-tabs .tab-link').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false')});
+        btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+        const target = btn.getAttribute('data-target');
+        document.querySelectorAll('.tab-panel').forEach(p=>{p.hidden=true;p.classList.remove('active')});
+        const panel = document.querySelector(target); if(panel){ panel.hidden=false; panel.classList.add('active'); }
+      })
+    });</script>
+</body>
+</html>
